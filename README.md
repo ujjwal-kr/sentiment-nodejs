@@ -2,4 +2,6 @@
 ## URL
 
 `https://sentiment-nodejs.herokuapp.com`
+
+GET: /
 HEADER: `text: string`
