@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const Setniment = require('sentiment')
+const Sentiment = require('sentiment')
 
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => {
     if (!req.headers.text) return res.json({message: "Please Enter something in the \'text\' header"})
-    const sentiment = new Setniment();
+    const sentiment = new Sentiment();
     const data = sentiment.analyze(req.headers.text);
     const result = {
         calculation: data.calculation,
