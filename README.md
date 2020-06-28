@@ -1,6 +1,5 @@
-# Sentiment NODE
-
+# Sentiment node
 ## URL
 
-`https://`
-body : text: string
+`https://sentiment-nodejs.herokuapp.com`
+HEADER: `text: string`
