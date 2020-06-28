@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const Sentiment = require('sentiment')
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
     if (!req.headers.text) return res.json({message: "Please Enter something in the \'text\' header"})
@@ -19,7 +19,22 @@ app.get('/', (req, res) => {
     })
 });
 
-app.listen(process.env.PORT, () => {
+
+app.post('/', async (req, res) => {
+    if (!req.body.text) return res.json({message: "Please Enter something in text field in body"})
+    const sentiment = new Sentiment();
+    const data = sentiment.analyze(req.body.text);
+    const result = {
+        calculation: data.calculation,
+        positive: data.positive,
+        negative: data.negative
+    }
+    res.json({
+        result
+    })
+}) 
+
+app.listen(3000, () => {
     console.log('Example app listening on port port!');
 });
 
