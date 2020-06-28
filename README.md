@@ -5,3 +5,6 @@
 
 GET: /
 HEADER: `text: string`
+
+POST: /
+BODY: `text: string`
